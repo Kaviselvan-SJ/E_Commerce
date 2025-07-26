@@ -1,13 +1,13 @@
 import React from 'react'
 import { Navbar } from '../components/NavBar'
 import { Footer } from '../components/Fotter'
-import HomeSection from '../components/HomeSection'
+import AboutSection from '../components/AboutSection'
 
-export default function Home() {
+export default function About() {
   return (
     <div>
       <Navbar/>
-      <HomeSection/>
+      <AboutSection/>
       <Footer/>
     </div>
   )

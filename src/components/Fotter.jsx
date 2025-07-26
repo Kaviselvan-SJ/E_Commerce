@@ -1,34 +1,60 @@
-import {
-  Instagram,
-  Linkedin,
-  Github,
-  Contact2,
-  ArrowUp,
-} from "lucide-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export const Footer = () => {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="py-12 px-4 bg-card relative border-t border-border mt-12 flex flex-col items-center gap-6">
-      <h2 className="text-2xl font-bold text-primary">CodeSpace</h2>
+    <footer className="bg-card border-t border-muted text-foreground py-10 px-4">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+        
+        {/* Company Info */}
+        <div>
+          <h3 className="text-xl font-semibold mb-2 text-primary">Pontaders</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Official distributor of <strong>IPOL</strong> oils and batteries.
+            Delivering performance and reliability across industries and vehicles.
+          </p>
+        </div>
 
-      {/* Navigation Links */}
-      <nav className="flex flex-wrap justify-center gap-6 text-muted-foreground font-medium">
-        <a href="#hero" className="hover:text-primary transition-colors">Home</a>
-        <a href="#about" className="hover:text-primary transition-colors">About</a>
-        <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-        <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
-        <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-        <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-      </nav>
+        {/* Quick Links */}
+        <div>
+          <h4 className="text-lg font-medium mb-2">Quick Links</h4>
+          <ul className="space-y-1 text-sm text-gray-700 dark:text-gray-300">
+            <li><Link to="/" className="hover:underline">Home</Link></li>
+            <li><Link to="/products" className="hover:underline">Products</Link></li>
+            <li><Link to="/about" className="hover:underline">About Us</Link></li>
+            <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+          </ul>
+        </div>
 
-      {/* Copyright */}
-      <p className="text-sm text-muted-foreground text-center">
-        &copy; {year} <span className="text-primary font-medium">CodeSpace</span> – All rights reserved.
-      </p>
+        {/* Contact Info */}
+        <div>
+          <h4 className="text-lg font-medium mb-2">Contact Us</h4>
+          <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+            <li className="flex items-center gap-2">
+              <FaPhoneAlt className="text-primary" />
+              +91 98765 43210
+            </li>
+            <li className="flex items-center gap-2">
+              <FaEnvelope className="text-primary" />
+              info@pontaders.in
+            </li>
+          </ul>
+        </div>
 
-     
+        {/* Social Media */}
+        <div>
+          <h4 className="text-lg font-medium mb-2">Follow Us</h4>
+          <div className="flex gap-4 text-primary text-xl">
+            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="#" aria-label="Instagram"><FaInstagram /></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center text-sm mt-10 text-gray-500 dark:text-gray-400">
+        © {new Date().getFullYear()} Pontraders. All rights reserved. | Built with 💼 & ⚙️
+      </div>
     </footer>
   );
 };

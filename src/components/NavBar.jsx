@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { ToggleButton } from "./ToggleButton";
 import { cn } from "@/lib/utils";
-import { ToggleButton } from "./ToggleButton"; 
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+const navLinks = [
+  { name: "Home", to: "/" },
+  { name: "About", to: "/about" },
+  { name: "Products", to: "/products" },
+  { name: "Contact", to: "/contact" },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +22,11 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav
@@ -35,64 +39,59 @@ export const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <a
+        <Link
           className="text-xl font-bold text-primary flex items-center"
-          href="#hero"
+          to="/"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground">Kaviselvan</span>{" "}
-            Portfolio
-          </span>
-        </a>
+          <span className="text-glow text-foreground">PON</span> Traders
+        </Link>
 
-        {/* Desktop Navigation + ThemeToggle */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={cn(
+                "text-foreground/80 hover:text-primary transition-colors duration-300",
+                location.pathname === link.to && "text-primary"
+              )}
             >
-              {item.name}
-            </a>
+              {link.name}
+            </Link>
           ))}
           <ToggleButton />
         </div>
 
-        
+        {/* Mobile Hamburger */}
         <div className="flex items-center md:hidden gap-3">
           <ToggleButton />
-          {!isScrolled && (
-            <button
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="p-2 text-foreground z-50"
-              aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          )}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 text-foreground z-50"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
         {/* Mobile Menu Overlay */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
+            "fixed inset-0 bg-background/95 backdrop-blur-md z-30 flex flex-col items-center justify-center transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
           <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
-              <a
-                key={key}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
               >
-                {item.name}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
         </div>
