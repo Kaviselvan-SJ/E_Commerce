@@ -9,7 +9,7 @@ export const Footer = () => {
         
         {/* Company Info */}
         <div>
-          <h3 className="text-xl font-semibold mb-2 text-primary">Pontaders</h3>
+          <h3 className="text-xl font-semibold mb-2 text-primary">Pon Traders</h3>
           <p className="text-sm ">
             Official distributor of <strong>IPOL</strong> oils and batteries.
             Delivering performance and reliability across industries and vehicles.

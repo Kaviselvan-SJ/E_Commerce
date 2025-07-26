@@ -8,6 +8,12 @@ import { NotFound } from "./pages/NotFound"
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import ProductDetails from "./components/ProductDetails";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cart from "./pages/Cart";
+
+
+
 
 function App() {
   useEffect(() => {
@@ -21,6 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" />
       <Routes>
 
         <Route path="/" element={<Home />} />
@@ -30,6 +37,7 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -1,14 +1,18 @@
-  import { useEffect, useState } from 'react';
-  import { useParams, useNavigate, Link } from 'react-router-dom';
-  import axios from 'axios';
-  import { Navbar } from '../components/NavBar'
-import { Footer } from '../components/Fotter'
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import { Navbar } from '../components/NavBar'
+import { Footer } from './Fotter';
+import { useCart } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
   export default function ProductDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
     const [similarProducts, setSimilarProducts] = useState([]);
+    const { addToCart, removeFromCart, isInCart } = useCart();
+
 
     useEffect(() => {
       const fetchProduct = async () => {
@@ -72,9 +76,28 @@ import { Footer } from '../components/Fotter'
               <button className="bg-green-600 hover:bg-green-700  px-5 py-2 rounded-lg font-medium">
                 Order Now
               </button>
-              <button className="bg-blue-600 hover:bg-blue-700  px-5 py-2 rounded-lg font-medium">
-                Add to Cart
-              </button>
+              {isInCart(product._id) ? (
+                <button
+                  className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-lg font-medium"
+                  onClick={() => {
+                    removeFromCart(product._id);
+                    toast.info("Removed from cart!");
+                  }}
+                >
+                  Remove from Cart
+                </button>
+              ) : (
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-medium"
+                  onClick={() => {
+                    addToCart(product);
+                    toast.success("Added to cart!");
+                  }}
+                >
+                  Add to Cart
+                </button>
+)}
+
             </div>
           </div>
         </div>
