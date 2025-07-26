@@ -47,24 +47,36 @@ export default function AdminDashboard() {
         {[
           { label: 'Product ID', name: 'productId' },
           { label: 'Name', name: 'name' },
-          { label: 'Description', name: 'description' },
+          { label: 'Description', name: 'description', textarea: true },
           { label: 'Quantity', name: 'quantity', type: 'number' },
           { label: 'Price', name: 'price', type: 'number' },
           { label: 'Image URL', name: 'imageUrl' },
           { label: 'Category', name: 'category' }
-        ].map(({ label, name, type = 'text' }) => (
+        ].map(({ label, name, type = 'text', textarea }) => (
           <div key={name}>
             <label className="block mb-1 font-semibold">{label}</label>
-            <input
-              type={type}
-              name={name}
-              value={form[name]}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded"
-              required
-            />
+            {textarea ? (
+              <textarea
+                name={name}
+                value={form[name]}
+                onChange={handleChange}
+                rows={3}
+                className="w-full px-3 py-2 border rounded resize-y"
+                required
+              />
+            ) : (
+              <input
+                type={type}
+                name={name}
+                value={form[name]}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded"
+                required
+              />
+            )}
           </div>
         ))}
+
         <div className="md:col-span-2">
           <button
             type="submit"
