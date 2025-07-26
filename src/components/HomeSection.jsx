@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import ipolIamge from '../assets/ipol.png'
 export default function Home() {
   return (
     <div >
@@ -28,11 +28,11 @@ export default function Home() {
       {/* IPOL Brand Highlight */}
       <section className="py-16 px-6 bg-card">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-          <img src="/assets/ipol-products.jpg" alt="IPOL Product Range" className="rounded-lg shadow-md" />
+          <img src={ipolIamge} alt="IPOL Product Image" className="rounded-lg shadow-md" />
           <div>
             <h2 className="text-3xl font-semibold mb-4 text-primary">Why IPOL?</h2>
             <p >
-              <strong>IPOL</strong> is one of India’s most respected lubricant brands, trusted by industries and auto professionals for decades. With a focus on quality, performance, and innovation, IPOL delivers lubricants that perform in the harshest conditions — from highways to heavy industry.
+              <strong>IPOL</strong> is one of India's most respected lubricant brands, trusted by industries and auto professionals for decades. With a focus on quality, performance, and innovation, IPOL delivers lubricants that perform in the harshest conditions — from highways to heavy industry.
             </p>
             <ul className="list-disc list-inside mt-4 space-y-2">
               <li>API-certified engine oils & greases</li>
