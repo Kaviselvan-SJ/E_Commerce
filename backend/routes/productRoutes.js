@@ -23,5 +23,28 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/category/:category', async (req, res) => {
+  try {
+    const products = await Product.find({ category: req.params.category });
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch products by category' });
+  }
+});
+
+// DELETE /api/products/:productId
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+    if (!deletedProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 export default router;
