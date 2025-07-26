@@ -19,8 +19,8 @@ export default function ProductSection() {
   }, []);
 
   return (
-    <section className="px-6 py-12 bg-gray-100 dark:bg-neutral-900 min-h-screen">
-      <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 dark:text-white">
+    <section className="px-6 py-20 min-h-screen">
+      <h2 className="text-3xl font-bold text-center mb-10 ">
         Our Products
       </h2>
 
