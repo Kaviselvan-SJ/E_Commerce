@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ProductSection() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,7 @@ export default function ProductSection() {
         {products.map((product) => (
           <div
             key={product._id}
-            className="bg-white dark:bg-neutral-800 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform"
+            className="rounded-lg shadow-lg overflow-hidden hover:scale-102 transition-transform"
           >
             <img
               src={product.imageUrl}
@@ -40,15 +41,14 @@ export default function ProductSection() {
             />
 
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-xl font-semibold">
                 {product.name}
               </h3>
-              <p className="text-red-600 font-bold text-lg mt-2">₹{product.price}</p>
+              <p className=" font-bold text-lg mt-2">₹{product.price}</p>
 
               <button
                 className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors w-full"
                 onClick={() => navigate(`/product/${product._id}`)}
-
               >
                 View Details
               </button>
