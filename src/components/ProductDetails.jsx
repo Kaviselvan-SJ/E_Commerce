@@ -73,7 +73,10 @@ import { toast } from 'react-toastify';
               </p>
             </div>
             <div className="flex gap-4 mt-4">
-              <button className="bg-green-600 hover:bg-green-700  px-5 py-2 rounded-lg font-medium">
+              <button
+                className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded-lg font-medium"
+                onClick={() => navigate("/checkout", { state: { product, quantity: 1 } })}
+              >
                 Order Now
               </button>
               {isInCart(product._id) ? (

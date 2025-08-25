@@ -11,11 +11,17 @@ import ProductDetails from "./components/ProductDetails";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cart from "./pages/Cart";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import PaymentPage from "./pages/PaymentPage"
 
 
 
 
 function App() {
+
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
@@ -39,6 +45,13 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/checkout"
+           element={
+            <Elements stripe={stripePromise}>
+              <PaymentPage />
+            </Elements>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
