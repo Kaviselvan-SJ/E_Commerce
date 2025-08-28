@@ -17,6 +17,7 @@ import PaymentPage from "./pages/PaymentPage"
 import MyOrdersWrapper from "./pages/MyOrders";
 import Login from "./pages/Login";
 import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 
@@ -50,14 +51,25 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/checkout"
-           element={
-            <Elements stripe={stripePromise}>
-              <PaymentPage />
-            </Elements>
+        
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Elements stripe={stripePromise}>
+                <PaymentPage />
+              </Elements>
+            </ProtectedRoute>
           }
         />
-        <Route path="/orders" element={<MyOrdersWrapper />} />
+        <Route
+          path="/orders"  
+          element={
+            <ProtectedRoute>
+              <MyOrdersWrapper />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
     </AuthProvider>
