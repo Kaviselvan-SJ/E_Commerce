@@ -15,13 +15,13 @@ const ContactSection = () => {
             Pon Traders - Official Distributor of IPOL
           </h2>
           <p className=" mb-2">
-            📍 <strong>Address:</strong> 123, Main Road, Industrial Estate, Coimbatore, Tamil Nadu - 641001
+            📍 <strong>Address:</strong> 139, Near MRF retreads, Vellakalpatti, Omalur tk, Salem , tamilnadu
           </p>
           <p className=" mb-2">
-            ☎️ <strong>Phone:</strong> +91 98765 43210
+            ☎️ <strong>Phone:</strong> +91 8072337585
           </p>
           <p className="mb-2">
-            📧 <strong>Email:</strong> contact@pontraders.com
+            📧 <strong>Email:</strong> pontraders06@gmail.com
           </p>
           <p className="">
             🕒 <strong>Business Hours:</strong> Mon - Sat, 9:00 AM to 7:00 PM

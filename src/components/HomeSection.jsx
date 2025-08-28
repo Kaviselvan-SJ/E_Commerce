@@ -12,7 +12,7 @@ export default function Home() {
             Official Distributor of <span className="text-primary">IPOL Lubricants</span>
           </h1>
           <p className="text-lg">
-            <strong>Pon Traders</strong> is the trusted name in South India for distributing high-performance oils and greases from the renowned brand <strong>IPOL</strong>.
+            <strong>Pon Traders</strong> is a trusted name for distributing high-performance oils and greases from the renowned brand <strong>IPOL</strong>, ensuring quality and reliability for diverse industrial needs.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/contact" className="cosmic-button">
