@@ -40,4 +40,20 @@ router.post("/create-order", async (req, res) => {
   }
 });
 
+router.get("/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+    const orders = await Order.find({ userEmail: email }).sort({ createdAt: -1 });
+
+    res.json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch orders" });
+  }
+});
+
 export default router;

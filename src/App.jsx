@@ -18,7 +18,7 @@ import MyOrdersWrapper from "./pages/MyOrders";
 import Login from "./pages/Login";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import { Profile } from "./pages/Profile";
 
 
 
@@ -50,6 +50,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
         
         <Route

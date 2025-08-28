@@ -3,6 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ToggleButton } from "./ToggleButton";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
+import { UserProfile } from "./UserProfile";
+
+
 const navLinks = [
   { name: "Home", to: "/" },
   { name: "About", to: "/about" },
@@ -94,6 +98,24 @@ export const Navbar = () => {
               </Link>
             ))}
           </div>
+          <button
+            onClick={() => {
+              navigate("/profile");
+              setIsMenuOpen(false);
+            }}
+            className="text-foreground hover:text-primary transition"
+          >
+            View Profile
+          </button>
+          <button
+            onClick={() => {
+              localStorage.clear();
+              navigate("/");
+            }}
+            className="text-red-500 hover:text-red-600 transition"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </nav>

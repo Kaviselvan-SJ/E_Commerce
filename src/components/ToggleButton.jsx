@@ -1,6 +1,7 @@
 import { Moon, Sun, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
+import { UserProfile } from "./UserProfile";
 
 export const ToggleButton = () => {
   const[isDarkMode,setIsDarkMode] = useState(false)
@@ -29,7 +30,7 @@ export const ToggleButton = () => {
   }
 
   return (
-
+    <>
     <div>
       <button
         className="p-2 rounded-full transition-colors duration-300 focus:outline-none "
@@ -55,6 +56,7 @@ export const ToggleButton = () => {
       ) }
       </button>
     </div>
-   
+    <UserProfile />
+    </>
   );
 };
