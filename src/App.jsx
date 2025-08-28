@@ -14,6 +14,9 @@ import Cart from "./pages/Cart";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentPage from "./pages/PaymentPage"
+import MyOrdersWrapper from "./pages/MyOrders";
+import Login from "./pages/Login";
+import { AuthProvider } from "./context/AuthContext";
 
 
 
@@ -32,11 +35,13 @@ function App() {
   }, []);
 
   return (
+     <AuthProvider>
     <BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} theme="colored" />
       <Routes>
 
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact/>} />
@@ -52,8 +57,10 @@ function App() {
             </Elements>
           }
         />
+        <Route path="/orders" element={<MyOrdersWrapper />} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
